@@ -1,5 +1,9 @@
 #!/bin/bash
 apt update
+mkdir /etc/apt/keyrings/
+
+apt-get install -y ca-certificates curl gnupg lsb-release apt-transport-https
+
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
@@ -7,8 +11,7 @@ echo \
 
 apt update
 apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
-apt-get install -y apt-transport-https ca-certificates curl
-mkdir /etc/apt/keyrings/
+
 wget https://packages.cloud.google.com/apt/doc/apt-key.gpg
 mv apt-key.gpg  /etc/apt/keyrings/kubernetes-archive-keyring.gpg
 echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
