@@ -10,7 +10,7 @@ echo \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 apt update
-apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
 wget https://packages.cloud.google.com/apt/doc/apt-key.gpg
 mv apt-key.gpg  /etc/apt/keyrings/kubernetes-archive-keyring.gpg
