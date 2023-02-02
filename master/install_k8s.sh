@@ -11,8 +11,6 @@ echo \
 
 apt update
 apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
-sudo usermod -aG docker $USER && newgrp docker
-
 
 wget https://packages.cloud.google.com/apt/doc/apt-key.gpg
 mv apt-key.gpg  /etc/apt/keyrings/kubernetes-archive-keyring.gpg
@@ -23,8 +21,8 @@ apt-mark hold kubelet kubeadm kubectl
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
 dpkg -i minikube_latest_amd64.deb
 rm minikube_latest_amd64.deb
+
+sudo usermod -aG docker $USER && newgrp docker
 minikube config set driver docker
 minikube delete
-minikube start --force
-mkdir -p /home/vagrant/kubernetes/secao04
-cp -r /vagrant/secao04/ /home/vagrant/kubernetes/secao04
+minikube start
