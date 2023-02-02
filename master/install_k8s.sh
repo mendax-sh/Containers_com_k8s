@@ -20,9 +20,10 @@ apt-get install -y kubelet kubeadm kubectl
 apt-mark hold kubelet kubeadm kubectl
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
 dpkg -i minikube_latest_amd64.deb
-rm minikube_latest_amd64.deb
 
-sudo usermod -aG docker $USER && newgrp docker
+sudo chmod 777 /usr/bin/minikube
 minikube config set driver docker
+#sudo usermod -aG docker $USER 
+#newgrp docker
 minikube delete
 minikube start
