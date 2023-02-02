@@ -11,6 +11,8 @@ echo \
 
 apt update
 apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo usermod -aG docker $USER && newgrp docker
+
 
 wget https://packages.cloud.google.com/apt/doc/apt-key.gpg
 mv apt-key.gpg  /etc/apt/keyrings/kubernetes-archive-keyring.gpg
