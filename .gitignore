@@ -1,1 +1,2 @@
-/master/.vagrat/
+*.vagrant/
+*.log
