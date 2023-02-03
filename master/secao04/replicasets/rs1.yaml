@@ -1,0 +1,19 @@
+apiversion: apps/v1
+kind: ReplicaSet
+  nome: frontend
+  labels:
+    app: frontend
+spec:
+  templates:
+    metadata:
+      nome: nginx-cotainer
+      labels:
+        env: production
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+  selector:
+    mathLabels:
+      env: production
+  replicas: 2
